@@ -1,0 +1,76 @@
+ <!-- Modal  Kaydol-->
+ <% var durum; %>
+ <% var userObj; %>
+
+ <div class="modal fade" id="modalKaydol" tabindex="-1" aria-labelledby="modalKaydolLabel" aria-hidden="true">
+     <div class="modal-dialog">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h5 class="modal-title " id="modalKaydol">Kaydol</h5>
+                 <button onclick="window.location.href ='/cancel';" type="button" class="btn-close"
+                     data-bs-dismiss="modal" aria-label="Close"></button>
+
+             </div>
+             <div class="modal-body">
+                 <form action="/signin" method="post">
+                     <!-- 2 column grid layout with text inputs for the first and last names -->
+                     <div class="row mb-4">
+                         <div class="col">
+                             <div class="form-outline">
+                                 <input type="text" name="ad" id="ad" class="form-control form-control-sm"
+                                     placeholder="Ad" required value=<%=userObj.isim%>>
+
+                             </div>
+                         </div>
+                         <div class="col">
+                             <div class="form-outline">
+                                 <input type="text" name="soyad" class="form-control form-control-sm"
+                                     placeholder="Soyad" required value=<%=userObj.soyad%>>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="col-auto mb-3">
+                         <div class="input-group">
+                             <input type="text" class="form-control form-control-sm" name="email1" placeholder="email"
+                                 required value=<%=userObj.email1%>>
+                             <div class="input-group-text">@</div>
+                             <input type="text" class="form-control form-control-sm" name="email2"
+                                 placeholder="example.com" required value=<%=userObj.email2%>>
+                         </div>
+                     </div>
+                     <!-- Password input -->
+                     <div class="row mb-4">
+                         <div class="col">
+                             <input type="password" name="sifre1" class="form-control form-control-sm"
+                                 placeholder="Şifre" required />
+                         </div>
+                         <div class="col">
+                             <input type="password" name="sifre2" class="form-control form-control-sm"
+                                 placeholder="Şifre tekrar" required />
+                         </div>
+                     </div>
+                     <!-- Checkbox -->
+                     <div class="form-check d-flex justify-content-start mb-4">
+                         <input class="form-check-input me-2" type="checkbox" value="1" name="bultenAbone" checked />
+                         <label class="form-check-label frm-chck-lbl" for="form2Example3">
+                             Haftalık bülten aboneliği.
+                         </label>
+                     </div>
+
+                     <!-- Submit button -->
+                     <div class="d-grid gap-1 d-md-flex justify-content-md-end" id="gonBtn">
+                         <input type="submit" class="btn btn-primary btn-block mb-4">
+                         <!-- <input type="button" id="gonBtn" class="btn btn-primary btn-block mb-4"> -->
+                     </div>
+                 </form>
+                 <% if (durum==="Hata") { %>
+                 <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+                     <strong><%= durum %> </strong> Girilen şifreler farklı..!
+                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                 </div>
+                 <% } %>
+             </div>
+
+         </div>
+     </div>
+ </div>

@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="tr">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Expires" CONTENT="0">
+  <meta http-equiv="Cache-Control" CONTENT="no-cache">
+  <meta http-equiv="Pragma" CONTENT="no-cache">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="lys-2021">
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="./style/style_calendar.css">
+  <link rel="stylesheet" href="./style/theme_calendar.css">
+
+  <link href="./style/dashboard.css" rel="stylesheet">
+
+  <title>Listeler</title>
+
+</head>
+
+<body>
+  <header class="navbar navbar-dark sticky-top bg-dark">
+    <!-- <header class="navbar navbar-dark sticky-top bg-dark  p-3 shadow"> -->
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 text-center text-muted fw-bold" href="#">LİSTELER</a>
+
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+      data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="container mx-0">
+      <div class="d-flex">
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group mx-0">
+            <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal"
+              data-bs-target="#kaydetModal"><i data-feather="plus-circle"></i> Görev</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary"><i class="me-1"
+                data-feather="list"></i>Listele</button>
+          </div>
+          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+            <span data-feather="calendar"></span>
+            Bu Hafta
+          </button>
+        </div>
+      </div>
+      <div class="d-flex m-xl-auto me-xl-0">
+        <form class="d-flex">
+          <input class="form-control form-control-dark form-control-sm me-2" type="search" placeholder="Liste ismi"
+            aria-label="Search">
+          <button class="btn btn-sm btn-outline-light" type="submit"><span class="m-1"
+              data-feather="search"></span></button>
+        </form>
+        <ul class="navbar-nav px-3">
+          <!-- <input class="form-control form-control-dark form-control-sm" type="text" placeholder="Search" aria-label="Search"> -->
+          <li class="nav-item text-nowrap">
+            <a class="btn btn-sm btn-outline-light mr-1" href="logout"></span>Çıkış... <span
+                data-feather="log-out"></span></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+ <% var badges; %> 
+  <section class="container ms-md-0">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <div class="position-sticky pt-1">
+        <ul class="nav flex-column">
+          <li class="nav-item mt-5">
+            <a class="nav-link active" aria-current="page" href="#">
+              <span data-feather="home"></span>
+              Ana Sayfa
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file"></span>
+              Günlük<span class="badge bg-secondary text-dark ms-1"><%= badges.gunluk %></span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="users"></span>
+              Kişisel<span class="badge bg-secondary text-dark ms-1"><%= badges.kisisel %> </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="shopping-cart"></span>
+              Alış-Veriş<span class="badge bg-secondary text-dark ms-1"><%= badges.alisVeris %></span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="layers"></span>
+              Projeler<span class="badge bg-secondary text-dark ms-1"><%= badges.projeler %></span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="bar-chart-2"></span>
+              Raporlar
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </section>
+  <section class="col-md-9  col-lg-9 ms-sm-auto px-0 mx-0">
+    <div class="container-fluid">
+      <div class="d-flex mt-2 mb-2 mx-auto">
+        <div class="p-2 bd-highlight border border-secondary border-2 rounded-3 ">
+          <h5><%=  kulAdi %> </h5>
+        </div>
+        <div class=" col d-flex align-items-end flex-column bd-highlight me-5 mx-2">
+          <div class="p-2 bd-highlight border border-secondary border-2 rounded-3 ">
+            <div class="btn-group " role="group" aria-label="Basic outlined example">
+              <div class="dropdown">
+                <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </button> -->
+                <button type="button" class="btn btn-outline-dark  rounded-pill mx-2 dropdown-toggle" id="dropdownMenu2"
+                  data-bs-toggle="dropdown" aria-expanded="false"><span class="m-1"
+                    data-feather="settings"></span></button>
+                <ul class="dropdown-menu border border-dark border-1" aria-labelledby="dropdownMenu2">
+                  <li><button class="dropdown-item" type="button">Profil Ayarları</button></li>
+                  <li><button class="dropdown-item" type="button">Bildirimler</button></li>
+                  <li><button class="dropdown-item" type="button">Hatırlatma</button></li>
+                </ul>
+              </div>
+
+              <button type="button" class="btn btn-outline-dark  rounded-pill mx-2"><span class="m-1"
+                  data-feather="bell"></span> <span class="badge bg-secondary text-dark ms-1">3</span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Verilerin işlemnmesi  -->
+    <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
+
+    <% var listeAdi,tarih; %>
+
+    <div class="container ">
+      <div class="row  row-cols-lg-2 row-cols-md-2 row-cols-sm-1">
+        <!-- row-cols-lg-2 row-cols-md-2 row-cols-sm-2 -->
+        <div class="col mx-auto">
+          <div class="card border-secondary ms-0">
+            <div class="card-header text-center">
+              <h6><%= tarih %> Listesi </h6>
+            </div>
+            <div class="card-body text-secondary">
+              <!-- <h5 class="card-title"></h5> -->
+              <div class="list-group list-group-flush">
+
+                <% for(let i=0;i<listeAdi.length;i++) { %>
+                <% let istekListe=listeAdi[i].split(" ").join("-") %>
+
+                <div class="list-group-item">
+                  <input class="form-check-input me-3" type="checkbox" value="">
+                  <a href="#" class="liste-adi" data-id=<%= istekListe %> aria-current="true">
+                    <%= listeAdi[i] %>
+                  </a>
+                </div>
+                <% } %>
+                <%  listeAdi=[]; %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-1 mx-auto mt-1" style="max-width: 75%;">
+          <div class="calendar-wrapper"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal Kaydet-->
+  <div class="modal fade" id="kaydetModal" tabindex="-1" aria-labelledby="kaydetModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="kaydetModalLabel">Görev Kaydet</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="/list-insert" method="POST" id="kaydetForm">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="inputGroup-sizing-default">Görev Başlığı</span>
+              <input type="text" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default" name="gBaslik" required>
+            </div>
+
+            <div class="input-group mb-3">
+              <label class="input-group-text" for="inputGroupSelect01">Kategori</label>
+              <select class="form-select" id="inputGroupSelect01" name="kategori" required>
+                <option selected>Seçiminiz</option>
+                <option value="1">Günlük</option>
+                <option value="2">Kişisel</option>
+                <option value="3">Alış Veriş</option>
+                <option value="4">Projeler</option>
+              </select>
+            </div>
+            <div class="input-group mb-3">
+              <label class="input-group-text" for="inputGroupSelect01">Öncelik</label>
+              <select class="form-select" id="inputGroupSelect01" name="oncelik" required>
+                <option selected>Seçiminiz</option>
+                <option value="1">Çok Önemli</option>
+                <option value="2">Önemli</option>
+                <option value="3">Normal</option>
+                <option value="4">Düşük</option>
+              </select>
+            </div>
+            <div class="input-group mb-3">
+              <label class="input-group-text" for="inputGroupSelect01">Tarih/Zaman</label>
+              <input type="datetime-local" class="form-control" id="daytime" name="tarZmn" required>
+            </div>
+            <div class="input-group">
+              <span class="input-group-text">Görev Açıklaması</span>
+              <textarea class="form-control" aria-label="With textarea" rows="4" name="aciklama" required></textarea>
+            </div>
+
+            <!-- Submit button -->
+            <div class="d-grid gap-1 d-md-flex justify-content-md-end mt-5" id="gonBtn">
+              <!-- <input type="submit" class="btn btn-primary btn-block mb-4"> -->
+              <input type="submit" id="gonBtn" class="btn btn-primary btn-block mb-4">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="aciklamaModal" tabindex="-1" aria-labelledby="aciklamaModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="aciklamaModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- <p class="aciklama modal-header"></p> -->
+          <table class="table table-success table-striped table-bordered">
+            <caption>Görev Özellikleri</caption>
+            <tbody>
+              <tr>
+                <th scope="row">Açıklama</th>
+                <td id="td-aciklama">...</td>
+
+              </tr>
+              <tr>
+                <th scope="row">Öncelik</th>
+                <td id="td-oncelik">...</td>
+              </tr>
+              <tr>
+                <th scope="row">Kategori</th>
+                <td id="td-kategori">...</td>
+              </tr>
+              <tr>
+                <th scope="row">Tarih</th>
+                <td id="td-tarih">...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+          <!-- <button type="button" class="btn btn-primary">Sil...</button> -->
+          <form action="/delete" method="post">
+            <button type="submit" class="btn btn-primary" id="liste-sil" value="" name="btnSil">Sil...</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Optional JavaScript; choose one of the two! -->
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+  </script>
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+    -->
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
+    integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous">
+  </script>
+  <script>
+    feather.replace();
+  </script>
+
+  <script src="./js/dashboard.js"></script>
+
+  <!-- Browser back btn engellemek için -->
+  <!-- <script src="./js/backBtn.js"></script> -->
+  <!-- <script type="text/javascript">
+  //back button engellemek için 3. madde
+  window.history.forward(1);
+</script> -->
+
+  <script src="./js/calendar.js"></script>
+
+  <script>
+    function selectDate(date) {
+      $('.calendar-wrapper').updateCalendarOptions({
+        date: date
+      });
+    }
+
+    var defaultConfig = {
+      weekDayLength: 1,
+      date: new Date(),
+      onClickDate: selectDate,
+      showYearDropdown: true,
+    };
+
+    $('.calendar-wrapper').calendar(defaultConfig);
+  </script>
+
+  <script>
+    $('a.liste-adi').click(function (e) {
+      e.preventDefault(); //event olştuğunda html tag ait özellik gereği yapılması gereken
+                          //işlemi iptal eder. Örn linke gidilmez.
+
+      var modalAciklama = $('#aciklamaModal');
+      var link = $(this).closest('a'); //linki seçer
+
+      modalAciklama.find('.modal-title').text(link.data('id'));
+
+      $.getJSON('/liste/' + link.data('id'), function (data) {
+        //app.get("/liste/:listeAdi" JQuery ile istek yapılıyor
+        let objList = JSON.parse(data);
+        console.log(objList);
+        modalAciklama.find('#td-aciklama').text(objList.aciklama);
+        modalAciklama.find('#td-oncelik').text(objList.oncelik);
+        modalAciklama.find('#td-kategori').text(objList.kategori);
+        let tarih = objList.tarih.replace('T', ' ');
+        tarih = tarih.replace('.000Z', ' ');
+        modalAciklama.find('#td-tarih').text(tarih);
+        // modalAciklama.find('#liste-sil').attr('action','/delete/'+objList.id);
+        modalAciklama.find('#liste-sil').attr('value', objList.id);
+
+        // modalAciklama.find('.modal-body').html("<p>Açıklama : " + objList.aciklama+"</p>"
+        //                                       );
+        modalAciklama.modal('show');
+
+      });
+
+    });
+  </script>
+  
+
+  <!-- <script>
+    if (window.history.replaceState) {
+      window.history.replaceState(null, null, window.location.href);
+    }
+  </script> -->
+
+  <script>
+    document.getElementById("kaydetForm").reset(); 
+  </script>
+
+</body>
+
+</html>

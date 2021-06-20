@@ -1,0 +1,29 @@
+<!-- Modal  Giriş-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Kullanıcı Girişi</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/listeler" method="post">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" name="kulAdi" id="kulAdi"
+                            placeholder="Ad-soyad">
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" name="girisSifresi" id="giriSifresi"
+                            placeholder="Şifre">
+                    </div>
+                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button> -->
+                    <div class="d-grid gap-1 d-md-flex justify-content-md-end">
+                        <button type="submit" class="btn btn-primary align-content-end ">Tamam</button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

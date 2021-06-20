@@ -1,0 +1,45 @@
+<% var navgirCik='Giriş...'; %> 
+<nav class="navbar navbar-expand-sm navbar-light sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="./images/logo.png" alt="logo">
+            Listeler</a>
+        <!-- responsive menu button -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Özellikler</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Kaynaklar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Hakkında</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">İletişim</a>
+                </li>
+                
+            </ul>
+            <ul class="navbar-nav me-auto ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalKaydol">Üye Ol</a>
+                </li>
+                <li class="nav-item" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <a class="nav-link" href="#"><%= navgirCik %> </a>
+                </li>
+            </ul>
+            <!-- <form class="d-flex">
+                <input class="form-control form-control-sm" type="search" placeholder="Liste ismi"
+                    aria-label="Search">
+                <button class="btn btn-sm btn-outline-primary mx-lg-2" type="submit">Ara...</button>
+            </form> -->
+
+        </div>
+    </div>
+</nav>

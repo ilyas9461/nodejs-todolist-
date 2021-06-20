@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("head") %>
+    <link rel="stylesheet" href="./style/list.css">
+    <title>Günlük İşler</title>
+</head>
+
+<body>
+    <%- include("nav") %>
+    <div class="container kap">
+        <div class="box" id="heading">
+            <h1><%= kindOfDay %> Liste </h1>
+        </div>
+        <div class="box">
+            <% for(var i=0;i<list.length;i++){ %>
+                <div class="item">
+                    <input type="checkbox" name="" id="">
+                    <p class="item"> <%= list[i] %> </p>
+                </div>
+               
+            <% } %>
+            <div class="d-grid gap-1 d-md-flex justify-content-md-end">
+                <form action="/list" method="post" class="item">
+                    <input type="text" name="itemName" placeholder="yeni işlem">
+                    
+                    <button type="submit">+</button>
+                </form>
+            </div>
+            
+        </div>
+     </div>
+    <%- include("contact-footer") %>
+</body>
+
+</html>

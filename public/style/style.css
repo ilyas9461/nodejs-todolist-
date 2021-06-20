@@ -1,0 +1,130 @@
+body {
+    display: block;
+    overflow-x: hidden;
+}
+
+nav {
+    background-color: white !important;
+}
+
+.navbar-brand img {
+    max-height: 60px;
+}
+
+.navbar-brand {
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: 900;
+    color: rgb(13, 110, 253) !important;
+}
+
+nav ul li a {
+    color: #a9a9a9;
+    font-size: 22px;
+    margin: auto 10px;
+}
+
+nav ul li a:hover {
+    /*color: #683aa4 !important;*/
+    background-color: rgb(13, 110, 253) !important;
+    color: whitesmoke !important;
+}
+
+/*  */
+section {
+    margin-top: 50px;
+    padding-top: 50px;
+    padding-bottom: 0px;
+}
+
+section h1 {
+    text-transform: uppercase;
+    font-weight: 900;
+    color: rgb(13, 110, 253);
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+section p {
+    font-size: 16px;
+    font-weight: 300;
+}
+
+button {
+    max-width: 50%;
+    border-radius: 50px !important;
+}
+
+#hero {
+    margin-top: 5px;
+    padding-top: 5px;
+    padding-bottom: 0px;
+}
+
+#hero .col {
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+}
+
+#hero .baslik {
+    justify-content: flex-start;
+    margin-top: 150px;
+}
+
+#hero .img-col {
+    justify-content: flex-start;
+    margin-top: 0px;
+}
+
+#hero img {
+    max-width: 90% !important;
+    width: 130%;
+}
+
+#hero .card {
+    box-shadow: 11px 7px 16px #f9f9f9;
+    border: 0;
+    text-align: center;
+}
+
+#hero .icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+#contact {
+    text-align: center;
+    background-color: gray;
+    color: white;
+}
+
+#contact h1 {
+    text-align: center;
+    color: white;
+}
+
+#contact p {
+    line-height: 10px;
+}
+
+.frm-chck-lbl {
+    font-size: smaller;
+    color: grey;
+
+}
+
+#projects{
+    margin-top: 100px;
+}
+
+#projects .projects {
+    margin-bottom: 50px;
+}
+
+#projects p {
+    line-height: normal;
+}
+
+
